@@ -2,8 +2,10 @@
   "name": "missing-to-g-withdraw",
   "version": "1.0.0",
   "description": "Converting msg from missing staff to g withdraw CW style",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
+    "start": "nodemon src/app.js",
+    "starttest": "nodemon src/msgParser.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/OfryL/missing-to-g-withdraw/issues"
   },
-  "homepage": "https://github.com/OfryL/missing-to-g-withdraw#readme"
+  "homepage": "https://github.com/OfryL/missing-to-g-withdraw#readme",
+  "dependencies": {
+    "config": "^3.2.2",
+    "log4js": "^5.0.0",
+    "telegraf": "^3.32.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
 }
