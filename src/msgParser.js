@@ -1,11 +1,11 @@
 const resCodes = require('./res.json');
 const resCodesLowerCase = require('./res.lowercase.json');
-
+const WITHDRAWCMD = "/g_withdraw ";
 module.exports = function() {
   'use strict';
   
 	function parseMsg(msg) {
-		let gwithdraw = "/g_withdraw ",
+		let gwithdraw = WITHDRAWCMD,
 			i = 0;
 		while (i < msg.length)
 		{
@@ -14,6 +14,7 @@ module.exports = function() {
 			gwithdraw = gwithdraw + parseLine(msg.substr(i, j - i));
 			i = j+1;
 		}
+		if (gwithdraw == WITHDRAWCMD) return;
 		return gwithdraw;
 	}
 	
