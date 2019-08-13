@@ -5,7 +5,6 @@ module.exports = function() {
   'use strict';
   
 	function parseMsg(msg) {
-		msg = removeFisrtLine(msg);
 		let gwithdraw = "/g_withdraw ",
 			i = 0;
 		while (i < msg.length)
@@ -18,17 +17,11 @@ module.exports = function() {
 		return gwithdraw;
 	}
 	
-	function removeFisrtLine(msg) {
-		let lineEnd = msg.split("\n")[0].length;
-		let newStr = msg.substr(lineEnd + 2, msg.length);
-		return newStr;
-	}
-	
 	function parseLine(line) {
 		let resData;
 		resData = line.split(" x ");
 		if (resData.length < 2)
-			return;
+			return "";
 		resData = getItemCode(resData[1]) + " " + resData[0].replace(' ','') + " ";
 		return resData; 
 	} 
@@ -38,6 +31,19 @@ module.exports = function() {
 		if (!resCode)
 			resCode = resCodesLowerCase[item.toLowerCase()];
 		return resCode;
+	}
+
+	function test() {
+		console.log(parseMsg(`Not enough materials for crafting Pouch of gold.
+Required:
+ 9 x Thread`));
+
+		console.log(parseMsg(`Not enough materials. Missing:
+ 21 x Bone
+ 17 x Stick
+ 7 x Magic stone
+ 4 x Coal
+ 24 x Iron ore`));	
 	}
 
 	return {
